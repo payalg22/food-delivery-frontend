@@ -1,0 +1,159 @@
+.container {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(217, 217, 217, 1);
+}
+
+.main {
+    width: 85%;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 20px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main > * {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+}
+
+.app {
+    width: 25%;
+}
+
+.app > img {
+    width: 80%;
+}
+
+.store {
+    display: flex;
+    height: 45px;
+    gap: 10px;
+}
+
+.store > span {
+    background-color: rgba(0, 0, 0, 1);
+    width: 170px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.store  img {
+    height: 80%;
+    width: 80%;
+    margin: 5px 10px 7px 10px;
+}
+
+img.playstore {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.app > p {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.subheading {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.deals {
+    width: 28%;
+    gap: 5px;
+}
+
+.subscribe {
+    width: 110%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.subscribe > input {
+    background-color: rgba(198, 196, 196, 0.849);
+    color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    width: 62%;
+}
+
+.subscribe > button {
+    background-color: rgba(252, 138, 6, 1);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 25px;
+    position: relative;
+    right: 8%;
+}
+
+.deals > .link {
+    margin-left: 20px;
+}
+
+.link {
+    font-size: 0.8em;
+    margin: 0;
+    color: rgba(3, 8, 31, 1);
+}
+
+.link > span {
+    text-decoration: underline;
+}
+
+.social {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 15px;
+}
+
+.legal {
+    gap: 10px;
+}
+
+.legal .link {
+    list-style: none;
+    text-decoration: underline;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.legal > ul {
+    padding-inline-start: 0;
+    margin: 0;
+}
+
+.footer {
+    width: 100%;
+    height: 15%;
+    background-color: rgba(3, 8, 31, 1);
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+}
+
+.bottom > span {
+    display: inline-flex;
+    gap: 40px;
+}
