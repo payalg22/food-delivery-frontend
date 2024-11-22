@@ -1,0 +1,61 @@
+.container {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    text-align: left;
+    color: rgba(49, 57, 87, 1);
+}
+
+.form > img {
+    width: 45%;
+    align-self: center;
+    margin: 10px 0;
+}
+
+.heading {
+    font-weight: 600;
+    margin: 0;
+    font-size: 2.25em;
+    color: rgba(12, 20, 33, 1);
+}
+
+.subheading {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.footer {
+    font-size: 1.1em;
+}
+
+.footer > span {
+    color: rgba(252, 138, 6, 1);
+    cursor: pointer;
+}
+
+.img {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 20px;
+}
+
+.img > img {
+    width: 100%;
+}

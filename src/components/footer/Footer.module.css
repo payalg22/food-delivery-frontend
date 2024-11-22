@@ -157,3 +157,123 @@ img.playstore {
     display: inline-flex;
     gap: 40px;
 }
+
+
+@media (min-width: 1350px) and (max-width: 1550px) {
+    .subscribe {
+        width: 120%;
+    }
+
+    .subscribe > input {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1350px) {
+    .main {
+        width: 95%;
+    }
+
+    .deals {
+        width: 30%;
+    }
+
+    .subscribe > input {
+        width: 55%;
+    }
+
+    .subscribe > button {
+        padding: 12px 20px;
+        right: 10%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        height: fit-content;
+    }
+
+    .main {
+        width: 100%;
+        font-size: 0.9em;
+        display: grid;
+        grid: repeat(2, 50%) / repeat(2, 50%);
+        justify-items: center;
+        gap: 10px;
+    }
+
+    .main > * {
+        width: 70%;
+    }
+
+    .subscribe {
+        width: 125%;
+    }
+
+    .subscribe > input {
+        width: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: fit-content;
+    }
+
+    .main {
+        width: 100%;
+        font-size: 0.9em;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .main > * {
+        width: 65%;
+    }
+
+    .app {
+        align-items: center;
+        width: 60%;
+        text-align: center;
+    }
+
+    .store {
+        width: 85%;
+    }
+
+    .subscribe {
+        width: 125%;
+    }
+
+    .subscribe > input {
+        width: 55%;
+    }
+
+    .subscribe > button {
+        padding: 12px 20px;
+        right: 10%;
+    }
+
+    .bottom {
+        justify-content: center;
+    }
+
+    .bottom > span {
+        display: none;
+    }
+}
+
+@media (max-width: 425px) {
+    .main > * {
+        width: 75%;
+    }
+
+    .app {
+        width: 65%;
+    }
+
+    .store {
+        width: 95%;
+    }
+}
+
