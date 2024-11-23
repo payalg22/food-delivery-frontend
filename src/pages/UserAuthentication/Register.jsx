@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
-import User from "../../components/UserAuthentication/User";
-import { validateLogin } from "../../utils/validate";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import User from "../../components/userAuthentication/User";
+import { validateSignUp } from "../../utils/validate";
 
-export default function Login() {
+export default function Register() {
   const [user, setUser] = useState({
+    name: "",
+    phone: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState({
+    name: false,
+    phone: false,
     email: false,
     password: false,
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
     setError({
+      name: false,
+      phone: false,
       email: false,
       password: false,
     });
@@ -23,17 +27,36 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validation = validateLogin(user);
+    const validation = validateSignUp(user);
     console.log(validation);
     if (validation === true) {
       console.log(user);
-        navigate("/home");
     } else {
       setError(validation);
     }
   };
 
   const fields = [
+    {
+      label: "Name",
+      type: "text",
+      placeholder: "eg. John A",
+      value: user.name,
+      onChange: (e) => {
+        setUser({ ...user, name: e.target.value });
+      },
+      error: error.name,
+    },
+    {
+      label: "Phone Number",
+      type: "number",
+      placeholder: "Enter your 10 digit mobile number",
+      value: user.phone,
+      onChange: (e) => {
+        setUser({ ...user, phone: e.target.value });
+      },
+      error: error.phone,
+    },
     {
       label: "Email",
       type: "text",
@@ -56,5 +79,5 @@ export default function Login() {
     },
   ];
 
-  return <User type="Login" fields={fields} action={handleSubmit} />;
+  return <User type="Register" fields={fields} action={handleSubmit} />;
 }

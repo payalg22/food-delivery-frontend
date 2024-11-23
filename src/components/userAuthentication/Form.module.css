@@ -1,0 +1,50 @@
+.form,
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  gap: 15px;
+}
+
+.label {
+  font-size: 1em;
+  color: rgba(12, 20, 33, 1);
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
+  padding: 10px;
+  padding-left: 20px;
+  color: rgba(136, 151, 173, 1);
+  font-weight: 400;
+  font-size: 1em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin: 5px 0 0 10px;
+}
+
+.submit {
+  cursor: pointer;
+  color: white;
+  background-color: rgba(252, 138, 6, 1);
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+}
