@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.logo {
+    height: 50%;
+}
+
+.sub {
+    flex: 1;
+    justify-content: end;
+}
+
+.options, .user, .selected {
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.selected { 
+    background-color: rgba(252, 138, 6, 1);
+    color: white;
+}
+
+.user {
+    width: 200px;
+    height: fit-content;
+    background-color: rgba(3, 8, 31, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.sub, .user {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 1.1em;
+}

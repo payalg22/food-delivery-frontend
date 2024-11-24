@@ -5,13 +5,13 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [assets, setAssets] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getAssets()
-      .then((response) => response.assets)
-      .then((data) => {
-        setAssets(data);
-      });
+    getAssets().then((data) => {
+      setAssets(data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -19,6 +19,7 @@ export const AppProvider = ({ children }) => {
       value={{
         assets,
         setAssets,
+        isLoading,
       }}
     >
       {children}
