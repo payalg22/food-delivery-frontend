@@ -4,6 +4,7 @@
     justify-content: space-between;
     gap: 20px;
     align-items: center;
+    width: 100%;
 }
 
 .logo {
@@ -16,13 +17,15 @@
 }
 
 .options, .user, .selected {
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 50px;
+    margin: 0;
 }
 
 .selected { 
     background-color: rgba(252, 138, 6, 1);
     color: white;
+    padding: 10px 20px;
 }
 
 .user {
@@ -40,3 +43,4 @@
     font-weight: 500;
     font-size: 1.1em;
 }
+
