@@ -7,3 +7,9 @@ export async function getAssets(){
    //console.log(response.data);
     return response.data;
 }
+
+export async function getPopularRestaurants() {
+    const response = await axios.get(`${API_URL}/restaurant/popular`);
+    console.log(response.data);
+    return response.data;
+}

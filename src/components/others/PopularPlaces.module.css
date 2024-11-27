@@ -1,0 +1,37 @@
+.container {
+    width: 100%;
+}
+
+.container > p {
+    font-size: 2em;
+    font-weight: 700;
+    text-align: left;
+    margin: 15px;
+}
+
+.block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.card {
+    width: 15%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.card > img {
+    width: 100%;
+    display: block;
+}
+
+.name {
+    background-color: rgba(252, 138, 6, 1);
+    color: white;
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px 0;
+    border-radius: 0 0 12px 12px;
+}

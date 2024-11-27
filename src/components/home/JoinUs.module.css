@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  height: 400px;
+  justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+
+  width: 49%;
+  text-align: left;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: linear-gradient(
+    245.7deg,
+    rgba(255, 255, 255, 0) 0.94%,
+    rgba(3, 8, 31, 0.19) 51.68%,
+    rgba(3, 8, 31, 0.89) 87.9%
+  );
+  position: relative;
+}
+
+.card > * {
+  width: 45%;
+  margin-left: 30px;
+}
+
+.bgimg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    margin: 0;
+}
+
+
+.label {
+  font-size: 1.1em;
+  font-weight: 700;
+  background-color: white;
+  border-radius: 0 0 12px 12px;
+  color: rgba(3, 8, 31, 1);
+  padding: 10px 0;
+  text-align: center;
+}
+
+.text {
+  color: rgba(252, 138, 6, 1);
+  font-weight: 500;
+  font-size: 1.1em;
+  margin-top: auto;
+}
+
+.heading {
+  color: rgba(255, 255, 255, 1);
+  font-size: 2.75em;
+  width: fit-content;
+  line-height: 1em;
+  margin-top: 0;
+}
+
+.button {
+    margin-bottom: 20px;
+    background-color: rgba(252, 138, 6, 1);
+    color: white;
+    font-weight: 500;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    width: 30%;
+}

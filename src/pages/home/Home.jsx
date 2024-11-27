@@ -6,6 +6,9 @@ import Hero from "../../components/home/Hero";
 import AppContext from "../../context/AppContext";
 import Stats from "../../components/home/Stats";
 import AboutUs from "../../components/home/AboutUs";
+import JoinUs from "../../components/home/JoinUs";
+import Ad from "../../components/home/Ad";
+import PopularPlaces from "../../components/others/PopularPlaces";
 
 export default function Home() {
   const { isLoading } = useContext(AppContext);
@@ -21,6 +24,15 @@ export default function Home() {
             <NavBar curr="Home" />
           </div>
           <Hero />
+          <div>
+            <PopularPlaces />
+          </div>
+          <div className={styles.ad}>
+            <Ad />
+          </div>
+          <div>
+            <JoinUs />
+          </div>
           <div className={styles.about}>
             <AboutUs />
           </div>
