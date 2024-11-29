@@ -9,6 +9,8 @@ import AboutUs from "../../components/home/AboutUs";
 import JoinUs from "../../components/home/JoinUs";
 import Ad from "../../components/home/Ad";
 import PopularPlaces from "../../components/others/PopularPlaces";
+import Categories from "../../components/home/Categories";
+import AllRestaurants from "../../components/home/AllRestaurants";
 
 export default function Home() {
   const { isLoading } = useContext(AppContext);
@@ -24,6 +26,12 @@ export default function Home() {
             <NavBar curr="Home" />
           </div>
           <Hero />
+          <div>
+            <AllRestaurants />
+          </div>
+          <div>
+            <Categories />
+          </div>
           <div>
             <PopularPlaces />
           </div>

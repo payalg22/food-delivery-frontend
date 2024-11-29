@@ -42,7 +42,7 @@ const validatePhone = (val) => {
 
 export const validateLogin = ({ email, password }) => {
   const isErrorEmail = validateEmail(email);
-  const isErrorPassword = validatePassword(password);
+  const isErrorPassword = !password ? "Please enter password" : false;
 
   if (!isErrorEmail && !isErrorPassword) {
     return true;

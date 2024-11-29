@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header * {
+  margin: 0;
+}
+
+.switch {
+  width: 40%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.switch > p {
+  cursor: pointer;
+}
+
+.selected {
+  color: rgba(252, 138, 6, 1);
+  padding: 10px 15px;
+  border: 1px solid rgba(252, 138, 6, 1);
+  border-radius: 50px;
+}
+
+.restaurants {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}

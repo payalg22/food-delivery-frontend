@@ -10,6 +10,18 @@ export async function getAssets(){
 
 export async function getPopularRestaurants() {
     const response = await axios.get(`${API_URL}/restaurant/popular`);
-    console.log(response.data);
+    //console.log(response.data);
+    return response.data;
+}
+
+export async function getOtherRestaurants() {
+    const response = await axios.get(`${API_URL}/restaurant/others`);
+    //console.log(response.data);
+    return response.data;
+}
+
+export async function getCategories() {
+    const response = await axios.get(`${API_URL}/restaurant/categories`);
+    //console.log(response.data);
     return response.data;
 }

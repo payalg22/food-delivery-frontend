@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import User from "../../components/userAuthentication/User";
 import { validateSignUp } from "../../utils/validate";
+import User from "../../components/UserAuthentication/User";
 
 export default function Register() {
   const [user, setUser] = useState({

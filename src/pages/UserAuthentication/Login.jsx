@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import User from "../../components/UserAuthentication/User";
 import { validateLogin } from "../../utils/validate";
 import { useNavigate } from "react-router-dom";
+import { getUser, login } from "../../services/user";
+import AppContext from "../../context/AppContext";
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -13,6 +15,11 @@ export default function Login() {
     password: false,
   });
   const navigate = useNavigate();
+  const { userInfo, setUserInfo } = useContext(AppContext); 
+
+  if(localStorage.getItem("token")) {
+    navigate("/home");
+  }
 
   useEffect(() => {
     setError({
@@ -21,13 +28,20 @@ export default function Login() {
     });
   }, [user]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validation = validateLogin(user);
-    console.log(validation);
     if (validation === true) {
-      console.log(user);
+      const response = await login(user);
+      if (response.status === 200) {
         navigate("/home");
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        const userData = await getUser();
+        setUserInfo(userData.data);
+      } else {
+        setError({...error, password: response.data.message});
+      }
     } else {
       setError(validation);
     }

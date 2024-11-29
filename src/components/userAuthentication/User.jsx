@@ -7,20 +7,11 @@ import { useNavigate } from "react-router-dom";
 import AppContext from "../../context/AppContext";
 
 export default function User({ type, fields, action }) {
-  //const [isLoading, setIsLoading] = useState(true);
-  const [image, setImage] = useState();
+  const { assets, isLoading } = useContext(AppContext);
+  const image = assets?.login;
   const isLogin = type == "Login" ? true : false;
   const navigate = useNavigate();
-  const { assets, isLoading } = useContext(AppContext);
-
-  useEffect(() => {
-    try {
-        console.log(assets);
-      setImage(assets.login);
-      
-    } catch (error) {}
-  }, []);
-
+  
   return (
     <>
       {isLoading ? (

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Login, Register, Home } from "./pages/index.js";
+import { Login, Register, Home, Profile, Product } from "./pages/index.js";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -13,6 +13,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </BrowserRouter>
       </div>
