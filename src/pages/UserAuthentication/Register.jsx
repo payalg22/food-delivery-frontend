@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { validateSignUp } from "../../utils/validate";
 import User from "../../components/UserAuthentication/User";
+import { register } from "../../services/user";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -15,6 +17,7 @@ export default function Register() {
     email: false,
     password: false,
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     setError({
@@ -25,12 +28,19 @@ export default function Register() {
     });
   }, [user]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validation = validateSignUp(user);
     console.log(validation);
     if (validation === true) {
       console.log(user);
+        const res = await register(user);
+        console.log(res);
+        if(res.status === 201) {
+            navigate("/login");
+        } else {
+            setError({...error, password: res.data.message});
+        }
     } else {
       setError(validation);
     }

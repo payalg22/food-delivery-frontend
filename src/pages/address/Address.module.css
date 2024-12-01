@@ -12,3 +12,72 @@
 .header {
     width: 90%;
 }
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.card {
+    height: 200px;
+    width: 250px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgba(175, 175, 175, 1);
+}
+
+.card > * {
+    margin: 0;
+}
+
+.card:first-child {
+    border: 2px dashed rgba(175, 175, 175, 1);
+    font-size: 1.125em;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.details {
+    font-size: 0.875em;
+}
+
+.default {
+    background-color: #FFEDD8;
+    color: #FC8A06;
+    font-size: 0.75em;
+    padding: 5px 10px;
+    border-radius: 50px;
+    float: right;
+}
+
+.utils {
+    font-size: 0.875em;
+    margin-top: auto;
+    color: #FC8A06;
+}
+
+.utils > span {
+    cursor: pointer;
+}
+
+span.part {
+    color: #AFAFAF;
+    margin: 5px;
+    cursor: text;
+}
+

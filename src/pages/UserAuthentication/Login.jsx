@@ -15,11 +15,13 @@ export default function Login() {
     password: false,
   });
   const navigate = useNavigate();
-  const { userInfo, setUserInfo } = useContext(AppContext); 
+  const { setUserInfo } = useContext(AppContext);
 
-  if(localStorage.getItem("token")) {
-    navigate("/home");
-  }
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/home");
+    }
+  }, []);
 
   useEffect(() => {
     setError({
@@ -34,13 +36,13 @@ export default function Login() {
     if (validation === true) {
       const response = await login(user);
       if (response.status === 200) {
-        navigate("/home");
         const token = response.data.token;
         localStorage.setItem("token", token);
         const userData = await getUser();
         setUserInfo(userData.data);
+        navigate("/home");
       } else {
-        setError({...error, password: response.data.message});
+        setError({ ...error, password: response.data.message });
       }
     } else {
       setError(validation);

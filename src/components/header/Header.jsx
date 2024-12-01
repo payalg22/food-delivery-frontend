@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppContext from "../../context/AppContext";
 import styles from "./Header.module.css";
@@ -9,9 +9,17 @@ import star from "../../assets/star.png";
 
 export default function Header() {
   const { userInfo } = useContext(AppContext);
-  const [addresses, setAddresses] = useState(userInfo?.address);
-  const defaultAddr = addresses?.find((addr) => addr.isDefault === true);
+  const [addresses, setAddresses] = useState();
+  const [defaultAddr, setDefaultAddr] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(userInfo) {
+        setAddresses(userInfo?.address);
+        const dAdd = userInfo?.address?.find((addr) => addr.isDefault === true)
+        setDefaultAddr(dAdd);
+    }
+  }, [userInfo]);
 
   return (
     <div className={styles.container}>

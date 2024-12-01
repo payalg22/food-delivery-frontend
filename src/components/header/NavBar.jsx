@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function NavBar({ curr }) {
   const { userInfo } = useContext(AppContext);
+  const name = userInfo?.name?.split(" ")[0];
   const navigate = useNavigate();
   const options = [
     "Home",
@@ -41,7 +42,7 @@ export default function NavBar({ curr }) {
       </div>
       <button className={styles.user} onClick={handleProfile}>
         <img src={user} />
-        <p>{userInfo ? `Hey ${userInfo.name}` : "Login/Sign Up"}</p>
+        <p>{userInfo ? `Hey ${name}` : "Login/Sign Up"}</p>
       </button>
     </div>
   );

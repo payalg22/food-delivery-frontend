@@ -25,3 +25,9 @@ export async function getCategories() {
     //console.log(response.data);
     return response.data;
 }
+
+export async function getStateList() {
+    const response = await axios.get(`${API_URL}/states`);
+    //console.log(response.data);
+    return response.data;
+}
