@@ -31,3 +31,19 @@ export async function getUser() {
     return error.response;
   }
 }
+
+export async function updateUser(details) {
+  const data = JSON.stringify(details);
+  try {
+    const response = await axios.put(`${API_URL}/user/edit`, data, {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: token,
+      },
+    });
+    
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}

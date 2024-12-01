@@ -13,21 +13,65 @@
     width: 90%;
 }
 
-.tag, .intro {
+.intro {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.tag > img {
-    width: 40px;
-    height: 40px;
-}
-
-.tag > h1 {
-    margin: 0;
-}
-
 .intro > h2 {
     font-weight: 500;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgba(252, 138, 6, 1);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.inputContainer {
+    display: grid;
+    grid: repeat(2, 40%) / repeat(2, 50%);
+    justify-items: start;
+    padding: 10px;
+    gap: 20px;
+}
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: left;
+}
+
+.inputBox > label {
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.inputBox > input {
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 1);
+    font-size: 0.9em;
+    background-color: rgba(249, 249, 249, 1);
+}
+
+.inputBox > input:focus {
+    outline: 0.5px solid rgba(0, 0, 0, 0.5);
+}
+
+.inputBox > input:disabled {
+    border: none;
+}
+
+.error {
+    margin: 0;
+    color: red;
+    font-size: 0.9em;
 }

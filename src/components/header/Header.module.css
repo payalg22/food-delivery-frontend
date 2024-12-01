@@ -33,6 +33,7 @@
     font-weight: 700;
     color: rgba(252, 138, 6, 1);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .right {

@@ -33,13 +33,14 @@ const validatePhone = (val) => {
   if (val == "") {
     return "Please enter phone number";
   }
-  if (val.length != 10) {
+  if (val.toString().length != 10) {
     return "Please enter a valid phone number";
   }
 
   return false;
 };
 
+//validate login
 export const validateLogin = ({ email, password }) => {
   const isErrorEmail = validateEmail(email);
   const isErrorPassword = !password ? "Please enter password" : false;
@@ -51,6 +52,7 @@ export const validateLogin = ({ email, password }) => {
   return { email: isErrorEmail, password: isErrorPassword };
 };
 
+//validate signup
 export const validateSignUp = ({ name, phone, email, password }) => {
   const isErrorName = validateName(name);
   const isErrorPhone = validatePhone(phone);
@@ -66,5 +68,22 @@ export const validateSignUp = ({ name, phone, email, password }) => {
     phone: isErrorPhone,
     email: isErrorEmail,
     password: isErrorPassword,
+  };
+};
+
+//validate update form
+export const validateUpdate = ({ name, email, phone }) => {
+  const isErrorName = validateName(name);
+  const isErrorPhone = validatePhone(phone);
+  const isErrorEmail = validateEmail(email);
+
+  if (!isErrorEmail && !isErrorName && !isErrorPhone) {
+    return true;
+  }
+
+  return {
+    name: isErrorName,
+    phone: isErrorPhone,
+    email: isErrorEmail,
   };
 };

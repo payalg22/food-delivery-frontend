@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Login, Register, Home, Profile, Product } from "./pages/index.js";
+import { Login, Register, Home, Profile, Product, Address } from "./pages/index.js";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/address" element={<Address />} />
           </Routes>
         </BrowserRouter>
       </div>
