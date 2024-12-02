@@ -4,5 +4,6 @@ import Home from "./Home/Home";
 import Profile from "./profile/EditProfile.jsx";
 import Product from "./product/Product.jsx";
 import Address from "./address/Address.jsx";
+import NotFound from "./notfound/NotFound.jsx";
 
-export { Login, Register, Home, Profile, Product, Address };
+export { Login, Register, Home, Profile, Product, Address, NotFound };

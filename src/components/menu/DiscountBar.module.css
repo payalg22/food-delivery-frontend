@@ -1,0 +1,9 @@
+.container {
+    box-sizing: border-box;
+}
+
+.offers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

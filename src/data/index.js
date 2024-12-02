@@ -1,0 +1,16 @@
+export const list = [
+    "Offers",
+    "Burgers",
+    "Fries",
+    "Snacks",
+    "Salads",
+    "Cold",
+    "drinks",
+    "Happy",
+    "Meal®",
+    "Desserts",
+    "Hot",
+    "drinks",
+    "Sauces",
+    "Orbit®",
+  ];

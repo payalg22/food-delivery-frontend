@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AllRestaurants.module.css";
-import { getOtherRestaurants } from "../../services/assets";
+import { getOtherRestaurants } from "../../services/restaurant";
 import ImageCard from "../others/ImageCard";
 
 export default function AllRestaurants() {

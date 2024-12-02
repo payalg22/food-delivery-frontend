@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./PopularPlaces.module.css";
-import { getPopularRestaurants } from "../../services/assets";
+import { getPopularRestaurants } from "../../services/restaurant";
 import { useNavigate } from "react-router-dom";
 
 export default function PopularPlaces() {

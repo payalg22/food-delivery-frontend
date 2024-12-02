@@ -8,18 +8,6 @@ export async function getAssets(){
     return response.data;
 }
 
-export async function getPopularRestaurants() {
-    const response = await axios.get(`${API_URL}/restaurant/popular`);
-    //console.log(response.data);
-    return response.data;
-}
-
-export async function getOtherRestaurants() {
-    const response = await axios.get(`${API_URL}/restaurant/others`);
-    //console.log(response.data);
-    return response.data;
-}
-
 export async function getCategories() {
     const response = await axios.get(`${API_URL}/restaurant/categories`);
     //console.log(response.data);
@@ -29,5 +17,11 @@ export async function getCategories() {
 export async function getStateList() {
     const response = await axios.get(`${API_URL}/states`);
     //console.log(response.data);
+    return response.data;
+}
+
+export async function getReviews() {
+    const response = await axios.get(`${API_URL}/reviews`);
+
     return response.data;
 }

@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    height: 600px;
+    background-color: #FBFBFB;
+    box-shadow: 5px 5px 14px 0px #00000040;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.column {
+    width: 33%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    padding-left: 40px;
+    align-items: flex-start;
+}
+
+.column, .contentbox {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 15px;
+}
+
+.contentbox {
+    width: 85%;
+    font-size: 1.125em;
+}
+
+.contentbox > P {
+    margin: 0;
+}
+
+.weekday {
+    font-weight: 700;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.heading {
+    font-weight: 700;
+}
+
+.content {
+    color: #03081F;
+    font-size: 1.175em;
+    margin: 0;
+}
+
+.opttime {
+    background-color: #03081F;
+    color: #FFFFFF;
+}
+
+.para {
+    line-height: 2em;
+    margin: 0;
+    max-width: 85%;
+}
