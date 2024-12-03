@@ -1,5 +1,5 @@
 import Login from "./UserAuthentication/Login.jsx";
-import Home from "./Home/Home";
+import Home from "./home/Home.jsx";
 import Profile from "./profile/EditProfile.jsx";
 import Product from "./product/Product.jsx";
 import Address from "./address/Address.jsx";
