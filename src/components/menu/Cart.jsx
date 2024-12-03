@@ -17,17 +17,22 @@ function CartItem({ menuItem, handleRemove }) {
         <div className={styles.price}>{"₹" + price}</div>
         <div className={styles.item}>{name}</div>
       </div>
-      <img src={remove} onClick={() => {handleRemove(_id)}} />
+      <img
+        src={remove}
+        onClick={() => {
+          handleRemove(_id);
+        }}
+      />
     </div>
   );
 }
 
 export default function ({ list, handleRemove }) {
-  const menuItems = list.items;
+  const menuItems = list?.items;
   return (
     <div className={styles.container}>
-      {menuItems.length === 0 ? (
-        <p>Cart is empty</p>
+      {(!list || menuItems?.length === 0) ? (
+        <p className={styles.empty}>Cart is empty</p>
       ) : (
         <>
           <div className={styles.share}>
@@ -40,8 +45,14 @@ export default function ({ list, handleRemove }) {
               <img src={icon} />
               <h1>My Basket</h1>
             </div>
-            {menuItems.map((item) => {
-              return <CartItem key={item._id} menuItem={item} handleRemove={handleRemove} />;
+            {menuItems?.map((item) => {
+              return (
+                <CartItem
+                  key={item._id}
+                  menuItem={item}
+                  handleRemove={handleRemove}
+                />
+              );
             })}
             <div className={styles.invoice}>
               <div>

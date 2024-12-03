@@ -43,8 +43,10 @@ export default function Product() {
   };
 
   useEffect(() => {
-    getCart().then((data) => {
-      setCart(data);
+    getCart().then((res) => {
+      if (res?.status === 200) {
+        setCart(res.data);
+      }
     });
   }, []);
 

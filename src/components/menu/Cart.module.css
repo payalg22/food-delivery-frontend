@@ -148,3 +148,12 @@
     margin: 10px 0;
     cursor: pointer;
 }
+
+.empty {
+    background-color: #028643;
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 12px;
+    color: white;
+}

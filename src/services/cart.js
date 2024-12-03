@@ -10,7 +10,7 @@ export async function getCart() {
         Authorization: token,
       },
     });
-    return response.data;
+    return response;
   } catch (error) {
     return error.response;
   }
