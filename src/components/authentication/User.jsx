@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { getAssets } from "../../services/assets";
+import React, { useContext } from "react";
 import styles from "./index.module.css";
 import logo from "../../assets/logo_basic.png";
 import Form from "./Form";

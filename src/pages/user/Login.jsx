@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import User from "../../components/UserAuthentication/User";
+import User from "../../components/authentication/User";
 import { validateLogin } from "../../utils/validate";
 import { useNavigate } from "react-router-dom";
 import { getUser, login } from "../../services/user";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { validateSignUp } from "../../utils/validate";
-import User from "../../components/UserAuthentication/User";
+import User from "../../components/authentication/User";
 import { register } from "../../services/user";
 import { useNavigate } from "react-router-dom";
 
@@ -32,12 +32,12 @@ export default function Register() {
     e.preventDefault();
     const validation = validateSignUp(user);
     if (validation === true) {
-        const res = await register(user);
-        if(res.status === 201) {
-            navigate("/login");
-        } else {
-            setError({...error, password: res.data.message});
-        }
+      const res = await register(user);
+      if (res.status === 201) {
+        navigate("/login");
+      } else {
+        setError({ ...error, password: res.data.message });
+      }
     } else {
       setError(validation);
     }
