@@ -7,7 +7,7 @@ import AppContext from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { validateUpdate } from "../../utils/validate";
 import { updateUser } from "../../services/user";
-import PageLabel from "../../components/others/pageLabel";
+import PageLabel from "../../components/others/PageLabel";
 
 const FormField = ({ details, isDisabled }) => {
   const { label, type, value, onAction, error } = details;

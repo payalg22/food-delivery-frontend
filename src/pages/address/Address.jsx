@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import styles from "./Address.module.css";
 import NavBar from "../../components/header/NavBar";
-import PageLabel from "../../components/others/pageLabel";
 import { getStateList } from "../../services/assets";
 import AddressModal from "../../components/editProfile/AddressModal";
 import {
@@ -12,6 +11,7 @@ import {
   modifyAddress,
 } from "../../services/user";
 import AppContext from "../../context/AppContext";
+import PageLabel from "../../components/others/PageLabel";
 
 export default function Address() {
   const [stateList, setStateList] = useState([]);
