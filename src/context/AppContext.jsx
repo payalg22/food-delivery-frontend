@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [assets, setAssets] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState();
+  const [cart, setCart] = useState();
 
   useEffect(() => {
     const fetchAssets = getAssets().then((data) => {
@@ -31,6 +32,15 @@ const AppProvider = ({ children }) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (cart?.items) {
+      const total = cart.items.reduce((acc, curr) => {
+        return acc + curr.item.price * curr.quantity;
+      }, 0);
+      setCart({ ...cart, total });
+    }
+  }, [cart?.items]);
+
   return (
     <AppContext.Provider
       value={{
@@ -39,6 +49,8 @@ const AppProvider = ({ children }) => {
         isLoading,
         userInfo,
         setUserInfo,
+        cart,
+        setCart,
       }}
     >
       {children}

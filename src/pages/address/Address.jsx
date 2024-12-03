@@ -39,19 +39,16 @@ export default function Address() {
       //toast saved succesfully
     } else {
       //toast unexpected error
-      console.log(res.data.message);
     }
   };
 
   const handleEdit = async (address) => {
     const res = await modifyAddress(address);
     if (res.status === 201) {
-      console.log(res);
       await fetchUser();
       //toast saved succesfully
     } else {
-      //toast unexpected error
-      console.log(res.data.message);
+      //toast unexpected error res.data.message
     }
   };
 
@@ -62,7 +59,6 @@ export default function Address() {
       //toast deleted succesfully
     } else {
       //toast unexpected error
-      console.log(res.data.message);
     }
   };
 

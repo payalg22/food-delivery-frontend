@@ -31,11 +31,8 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validation = validateSignUp(user);
-    console.log(validation);
     if (validation === true) {
-      console.log(user);
         const res = await register(user);
-        console.log(res);
         if(res.status === 201) {
             navigate("/login");
         } else {

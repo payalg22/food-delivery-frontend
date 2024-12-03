@@ -7,15 +7,13 @@ import arrow from "../../assets/down.png";
 import location from "../../assets/location.png";
 import star from "../../assets/star.png";
 
-export default function Header() {
+export default function Header({handleCart}) {
   const { userInfo } = useContext(AppContext);
-  const [addresses, setAddresses] = useState();
   const [defaultAddr, setDefaultAddr] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if(userInfo) {
-        setAddresses(userInfo?.address);
         const dAdd = userInfo?.address?.find((addr) => addr.isDefault === true)
         setDefaultAddr(dAdd);
     }
@@ -37,7 +35,7 @@ export default function Header() {
       </div>
       <div className={styles.right}>
         <img src={cart} />
-        <span className={styles.cart}>My Cart</span>
+        <span className={styles.cart} onClick={handleCart}>My Cart</span>
         <span className={styles.blank}></span>
         <img src={arrow} />
       </div>

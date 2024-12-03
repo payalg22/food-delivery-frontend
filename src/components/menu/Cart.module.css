@@ -1,0 +1,150 @@
+.container {
+    width: 100%;
+    gap: 20px;
+}
+
+.itembox, .header, .share, .total, .tiles, .checkout, .invoice > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.container , .cart {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart {
+    background-color: #F9F9F9;
+    border-radius: 12px;
+    border: 1px solid #0000001C;
+}
+
+.cart > * {
+    margin: 0;
+    border: 1px solid #00000033;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.header, .checkout {
+    background-color: #028643;
+    color: #FFFFFF;
+}
+
+.header {
+    border-radius: 12px 12px 0 0;
+    justify-content: space-evenly;
+}
+
+.share {
+    background-color: #FC8A06;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.share > p {
+    max-width: 45%;
+}
+
+.copylink {
+    background-color: #FFFFFF;
+    color: #FC8A06;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+.itembox * {
+    margin: 0;
+}
+
+.itembox {
+    padding: 20px;
+    gap: 10%;
+    justify-content: space-between;
+}
+
+.itembox > img {
+    cursor: pointer;
+}
+
+.quantity {
+    padding: 5px 12.5px;
+    font-size: 1.5em;
+    font-weight: 700;
+    border-radius: 50%;
+    color: #FFFFFF;
+    background-color: #FC8A06;
+}
+
+.details {
+    width: 70%;
+}
+
+.item {
+    color: #03081F;
+    font-weight: 600;
+}
+
+.price {
+    color: #028643;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+.invoice > div {
+    justify-content: space-between;
+}
+
+.invoice  p {
+    margin: 5px;
+    color: #03081F;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+.invoice span {
+    color: #212121;
+    font-size: 1.5em;
+}
+
+.total {
+    background-color: #FC8A06CC;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+
+.tiles {
+    justify-content: space-between;
+}
+
+.tiles > div {
+    background-color: #EEEEEE;
+    border: 1px solid #00000033;
+    border-radius: 12px;
+    text-align: center;
+    width: 45%;
+    padding: 10px 5px;
+}
+
+.tiles p {
+    margin: 5px;
+}
+
+.bottom {
+    border-radius: 0 0 12px 12px;
+}
+
+.checkout {
+    gap: 20%;
+    justify-content: start;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+}

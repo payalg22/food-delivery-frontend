@@ -23,3 +23,14 @@ export async function getRestaurantInfo(id) {
     return err.response;
   }
 }
+
+//get menu
+export async function getMenu(id) {
+    try {
+      const response = await axios.get(`${API_URL}/restaurant/menu/${id}`);
+      //console.log(response.data);
+      return response;
+    } catch (err) {
+      return err.response;
+    }
+}
