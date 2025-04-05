@@ -24,12 +24,6 @@
   font-size: 1em;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .error {
     color: red;
     font-size: 0.9em;

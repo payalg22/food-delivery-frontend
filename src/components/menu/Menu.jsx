@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./Menu.module.css";
 import { getCategories } from "../../services/assets";
 import { getMenu } from "../../services/restaurant";
+import { useSelector, useDispatch } from "react-redux";
+import menuActions from "../../redux/menuSlice";
+import cartActions from "../../redux/cartSlice";
 
 function Item({ item, img, handleAdd }) {
+    const dispatch = useDispatch();
   const { name, price, description, _id } = item;
   return (
     <div className={styles.card}>
@@ -13,7 +17,7 @@ function Item({ item, img, handleAdd }) {
         <span className={styles.add}>
           <span
             onClick={() => {
-              handleAdd(_id);
+              dispatch(cartActions.addToCart({_id, price, name}));
             }}
           >
             +
@@ -28,16 +32,17 @@ function Item({ item, img, handleAdd }) {
 
 export default function Menu({ restaurant, handleAdd }) {
   const [categories, setCategories] = useState();
-  const [menu, setMenu] = useState();
+  //const [menu, setMenu] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
+  const menu = useSelector(store => store.menu);
+  const dispatch = useDispatch();
   useEffect(() => {
     const category = getCategories().then((data) => {
       setCategories(data);
     });
     const menuInfo = getMenu(restaurant).then((res) => {
       if (res.status === 200) {
-        setMenu(res.data);
+        dispatch(menuActions.setMenu(res.data));
       }
     });
 

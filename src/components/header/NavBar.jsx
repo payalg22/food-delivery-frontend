@@ -10,32 +10,37 @@ export default function NavBar({ curr }) {
   const name = userInfo?.name?.split(" ")[0];
   const navigate = useNavigate();
   const options = [
-    "Home",
-    "Browse Menu",
-    "Special Offers",
-    "Restaurants",
-    "Track Order",
+    { page: "Home", path: "home" },
+    { page: "Browse Menu", path: "home" },
+    { page: "Special Offers", path: "home" },
+    { page: "Restaurants", path: "home" },
+    { page: "Track Order", path: "home" },
   ];
 
   const handleProfile = () => {
-    if(userInfo) {
-       navigate("/profile");
+    if (userInfo) {
+      navigate("/profile");
     } else {
-        navigate("/");
+      navigate("/");
     }
-  }
+  };
 
   return (
     <div className={styles.container}>
-      <img src={logo} className={styles.logo} />
+      <img
+        src={logo}
+        className={styles.logo}
+        onClick={() => navigate("/home")}
+      />
       <div className={styles.sub}>
         {options.map((item, index) => {
           return (
             <p
               key={index}
-              className={curr === item ? styles.selected : styles.options}
+              className={curr === item.page ? styles.selected : styles.options}
+              onClick={() => navigate(`/${item.path}`)}
             >
-              {item}
+              {item.page}
             </p>
           );
         })}

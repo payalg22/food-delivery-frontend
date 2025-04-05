@@ -24,23 +24,6 @@ export default function Product() {
   const { cart, setCart } = useContext(AppContext);
   const navigate = useNavigate();
 
-  const handleViewCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const handleAddToCart = async (id) => {
-    const res = await addToCart(id);
-    getCart().then((data) => {
-      setCart(data);
-    });
-  };
-
-  const handleRemoveFromCart = async (id) => {
-    const res = await removeFromCart(id);
-    getCart().then((data) => {
-      setCart(data);
-    });
-  };
 
   useEffect(() => {
     getCart().then((res) => {
@@ -59,6 +42,29 @@ export default function Product() {
       }
     });
   }, [id]);
+
+  
+  const handleViewCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const handleAddToCart = async (id) => {
+    const res = await addToCart(id);
+    getCart().then((data) => {
+      setCart(data);
+    });
+  };
+
+  const handleRemoveFromCart = async (id) => {
+    const res = await removeFromCart(id);
+    getCart().then((data) => {
+      setCart(data);
+    });
+  };
+
+  const handleCheckout = () => {
+    
+  }
 
   return (
     <>

@@ -6,10 +6,15 @@ import share from "../../assets/share.png";
 import scooter from "../../assets/deliveryScooter.png";
 import store from "../../assets/newStore.png";
 import forward from "../../assets/forwardButton.png";
+import { useDispatch, useSelector } from "react-redux";
+import cartActions from "../../redux/cartSlice";
+import calculateTotal from "../../utils/calculateTotal";
 
-function CartItem({ menuItem, handleRemove }) {
-  const { quantity, item } = menuItem;
-  const { price, name, _id } = item;
+//TODO: CONNECT CART TO BACKEND: UPDATE
+function CartItem({ menuItem }) {
+  const dispatch = useDispatch();
+  const { quantity, price, name, _id } = menuItem;
+
   return (
     <div className={styles.itembox}>
       <div className={styles.quantity}>{quantity}x</div>
@@ -20,18 +25,19 @@ function CartItem({ menuItem, handleRemove }) {
       <img
         src={remove}
         onClick={() => {
-          handleRemove(_id);
+          dispatch(cartActions.removeFromCart(_id));
         }}
       />
     </div>
   );
 }
 
-export default function ({ list, handleRemove }) {
-  const menuItems = list?.items;
+export default function Cart() {
+  const menuItems = useSelector((store) => store.cart);
+  const total = calculateTotal(menuItems);
   return (
     <div className={styles.container}>
-      {(!list || menuItems?.length === 0) ? (
+      {menuItems?.length === 0 ? (
         <p className={styles.empty}>Cart is empty</p>
       ) : (
         <>
@@ -46,18 +52,12 @@ export default function ({ list, handleRemove }) {
               <h1>My Basket</h1>
             </div>
             {menuItems?.map((item) => {
-              return (
-                <CartItem
-                  key={item._id}
-                  menuItem={item}
-                  handleRemove={handleRemove}
-                />
-              );
+              return <CartItem key={item._id} menuItem={item} />;
             })}
             <div className={styles.invoice}>
               <div>
                 <p> Sub Total: </p>
-                <span>{list?.total?.toFixed(2)}</span>
+                <span>{total}</span>
               </div>
               <div>
                 <p>Discounts:</p> <span>-₹25.00</span>
@@ -70,7 +70,7 @@ export default function ({ list, handleRemove }) {
             <div>
               <div className={styles.total}>
                 <p>Total to pay</p>
-                <h1>₹{list?.total?.toFixed(2)}</h1>
+                <h1>₹{total}</h1>
               </div>
             </div>
             <div className={styles.bottom}>

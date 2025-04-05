@@ -42,7 +42,7 @@ export default function User({ type, fields, action }) {
                   Already have an account?{" "}
                   <span onClick={() => navigate("/login")}>Sign in</span>
                 </p>
-              )}
+              )} 
             </div>
           </div>
           <div className={styles.img}>
