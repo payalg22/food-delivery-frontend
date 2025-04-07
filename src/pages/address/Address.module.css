@@ -56,13 +56,20 @@
     font-size: 0.875em;
 }
 
-.default {
+.default, .others {
     background-color: #FFEDD8;
     color: #FC8A06;
     font-size: 0.75em;
     padding: 5px 10px;
     border-radius: 50px;
     float: right;
+    border: 1px solid #FFEDD8;
+}
+
+span.others {
+    background-color: transparent;
+    border: 1px solid #FC8A06;
+    cursor: pointer;
 }
 
 .utils {

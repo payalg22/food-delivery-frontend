@@ -13,7 +13,7 @@ import { getRestaurantInfo } from "../../services/restaurant";
 import search from "../../assets/search.png";
 import { list } from "../../data/index";
 import Banner from "../../components/menu/Banner";
-import { addToCart, getCart, removeFromCart } from "../../services/cart";
+import { getCart } from "../../services/cart";
 import AppContext from "../../context/AppContext";
 import Cart from "../../components/menu/Cart";
 
@@ -23,7 +23,6 @@ export default function Product() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cart, setCart } = useContext(AppContext);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     getCart().then((res) => {
@@ -43,28 +42,9 @@ export default function Product() {
     });
   }, [id]);
 
-  
   const handleViewCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-
-  const handleAddToCart = async (id) => {
-    const res = await addToCart(id);
-    getCart().then((data) => {
-      setCart(data);
-    });
-  };
-
-  const handleRemoveFromCart = async (id) => {
-    const res = await removeFromCart(id);
-    getCart().then((data) => {
-      setCart(data);
-    });
-  };
-
-  const handleCheckout = () => {
-    
-  }
 
   return (
     <>
@@ -98,11 +78,11 @@ export default function Product() {
             <DiscountBar
               restaurant={restaurant?.name + " " + restaurant?.city}
             />
-            <Menu restaurant={id} handleAdd={handleAddToCart} />
+            <Menu restaurant={id} />
           </div>
           {isCartOpen && (
             <div className={styles.cart}>
-              <Cart list={cart} handleRemove={handleRemoveFromCart} />
+              <Cart />
             </div>
           )}
         </div>

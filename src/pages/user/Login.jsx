@@ -39,7 +39,7 @@ export default function Login() {
         const token = response.data.token;
         localStorage.setItem("token", token);
         const userData = await getUser();
-        setUserInfo(userData.data);
+        await setUserInfo(userData.data);
         navigate("/home");
       } else {
         setError({ ...error, password: response.data.message });

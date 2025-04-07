@@ -6,18 +6,21 @@ import cart from "../../assets/cart.png";
 import arrow from "../../assets/down.png";
 import location from "../../assets/location.png";
 import star from "../../assets/star.png";
+import { useSelector } from "react-redux";
 
-export default function Header({handleCart}) {
-  const { userInfo } = useContext(AppContext);
+export default function Header({ handleCart }) {
   const [defaultAddr, setDefaultAddr] = useState(null);
   const navigate = useNavigate();
+  const addressList = useSelector(store => store.address);
 
   useEffect(() => {
-    if(userInfo) {
-        const dAdd = userInfo?.address?.find((addr) => addr.isDefault === true)
-        setDefaultAddr(dAdd);
+    if (addressList) {
+      const dAdd = addressList.find((addr) => addr.isDefault === true);
+      setDefaultAddr(dAdd);
     }
-  }, [userInfo]);
+  }, []);
+
+  console.log(addressList);
 
   return (
     <div className={styles.container}>
@@ -35,7 +38,9 @@ export default function Header({handleCart}) {
       </div>
       <div className={styles.right}>
         <img src={cart} />
-        <span className={styles.cart} onClick={handleCart}>My Cart</span>
+        <span className={styles.cart} onClick={handleCart}>
+          My Cart
+        </span>
         <span className={styles.blank}></span>
         <img src={arrow} />
       </div>

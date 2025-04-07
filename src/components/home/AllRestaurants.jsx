@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import styles from "./AllRestaurants.module.css";
 import { getOtherRestaurants } from "../../services/restaurant";
 import ImageCard from "../others/ImageCard";
+import { useNavigate } from "react-router-dom";
 
 export default function AllRestaurants() {
   const [selectedCuisine, setSelectedCuisine] = useState("Pizza & Fast food");
   const [allRestaurants, setAllRestaurants] = useState();
   const [selectedRestaurants, setSelectedRestaurants] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getOtherRestaurants().then((data) => {
@@ -62,6 +64,7 @@ export default function AllRestaurants() {
                   label={"Restaurant"}
                   heading={item.name + " " + item.city}
                   logo={item.logo}
+                  showMenu={() => navigate(`/product/${item._id}`)}
                 />
               );
 

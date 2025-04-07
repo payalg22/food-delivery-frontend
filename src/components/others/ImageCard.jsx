@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./ImageCard.module.css";
 
-export default function ImageCard({label, heading, logo, discount, isAdd }) {
+export default function ImageCard({label, heading, logo, discount, isAdd, showMenu }) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={showMenu}>
       <img src={logo} className={styles.bgImg} />
       <span className={styles.discount}>
         -{discount || Math.round(Math.random() * 30) + 10}%

@@ -6,10 +6,10 @@ import check from "../../assets/minOrder.png";
 import rating from "../../assets/rating.png";
 
 export default function Banner({ restaurant }) {
-  const { image, name, city } = restaurant;
+  const { image, name, city, logo } = restaurant;
   return (
     <div className={styles.container}>
-      <img className={styles.bgimg} src={image} />
+      <img className={styles.bgimg} src={image || logo} />
       <div className={styles.main}>
         <div className={styles.left}>
           <p>I'm lovin' it!</p>
@@ -23,7 +23,7 @@ export default function Banner({ restaurant }) {
           </div>
         </div>
         <div className={styles.right}>
-        <img className={styles.img} src={image} />
+        <img className={styles.img} src={image || logo} />
         <img src={rating} className={styles.rating} />
         </div>
       </div>

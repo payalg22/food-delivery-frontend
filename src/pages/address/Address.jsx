@@ -12,12 +12,16 @@ import {
 } from "../../services/user";
 import AppContext from "../../context/AppContext";
 import PageLabel from "../../components/others/PageLabel";
+import { useDispatch, useSelector } from "react-redux";
+import addressActions from "../../redux/addressSlice";
 
 export default function Address() {
   const [stateList, setStateList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { userInfo, setUserInfo } = useContext(AppContext);
   const [allAddresses, setAllAddresses] = useState();
+  const allAddress = useSelector((store) => store.address);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getStateList().then((res) => {
@@ -36,6 +40,7 @@ export default function Address() {
     const res = await addAddress(address);
     if (res.status === 201) {
       await fetchUser();
+      dispatch(addressActions.addAddress(address));
       //toast saved succesfully
     } else {
       //toast unexpected error
@@ -46,10 +51,16 @@ export default function Address() {
     const res = await modifyAddress(address);
     if (res.status === 201) {
       await fetchUser();
+      dispatch(addressActions.removeAddress(address._id));
       //toast saved succesfully
     } else {
       //toast unexpected error res.data.message
     }
+  };
+
+  const handleSetDefault = (id) => {
+    //handle setDefualt at backend
+    dispatch(addressActions.setDefaultAddress(id));
   };
 
   const handleDelete = async (id) => {
@@ -89,13 +100,20 @@ export default function Address() {
               />
               <p>Add Address</p>
             </div>
-            {allAddresses?.map((addr) => {
+            {allAddress?.map((addr) => {
               return (
                 <div key={addr._id} className={styles.card}>
                   <div>
                     <span className={styles.name}>{userInfo.name}</span>
-                    {addr.isDefault && (
+                    {addr.isDefault ? (
                       <span className={styles.default}>Default</span>
+                    ) : (
+                      <span
+                        className={styles.others}
+                        onClick={() => handleSetDefault(addr._id)}
+                      >
+                        Set Default
+                      </span>
                     )}
                   </div>
                   <p className={styles.details}>

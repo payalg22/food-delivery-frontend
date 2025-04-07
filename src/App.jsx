@@ -3,6 +3,7 @@ import "./App.css";
 import { Login, Register, Home, Profile, Product, Address, NotFound } from "./pages/index.js";
 import Footer from "./components/footer/Footer";
 import Scroll from "./pages/Scroll.jsx";
+import Checkout from "./pages/checkout/Checkout.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/address" element={<Address />} />

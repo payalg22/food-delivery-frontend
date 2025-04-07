@@ -12,6 +12,7 @@
   border-radius: 12px;
   box-sizing: border-box;
   padding: 10px 25px;
+  cursor: pointer;
 }
 
 .discount {

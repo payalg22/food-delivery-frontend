@@ -5,23 +5,24 @@ import { getMenu } from "../../services/restaurant";
 import { useSelector, useDispatch } from "react-redux";
 import menuActions from "../../redux/menuSlice";
 import cartActions from "../../redux/cartSlice";
+import { addToCart } from "../../services/cart";
 
-function Item({ item, img, handleAdd }) {
-    const dispatch = useDispatch();
+function Item({ item, img }) {
+  const dispatch = useDispatch();
   const { name, price, description, _id } = item;
+
+  const handleAdd = async () => {
+    dispatch(cartActions.addToCart({ _id, price, name, img }));
+    const res = await addToCart(_id);
+  };
+
   return (
     <div className={styles.card}>
       <p className={styles.name}>{name}</p>
       <div className={styles.image}>
         <img src={img} />
         <span className={styles.add}>
-          <span
-            onClick={() => {
-              dispatch(cartActions.addToCart({_id, price, name}));
-            }}
-          >
-            +
-          </span>
+          <span onClick={handleAdd}>+</span>
         </span>
       </div>
       <p className={styles.desc}>{description}</p>
@@ -30,12 +31,12 @@ function Item({ item, img, handleAdd }) {
   );
 }
 
-export default function Menu({ restaurant, handleAdd }) {
+export default function Menu({ restaurant }) {
   const [categories, setCategories] = useState();
-  //const [menu, setMenu] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const menu = useSelector(store => store.menu);
+  const menu = useSelector((store) => store.menu);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const category = getCategories().then((data) => {
       setCategories(data);
@@ -65,14 +66,7 @@ export default function Menu({ restaurant, handleAdd }) {
                 <div className={styles.menu}>
                   {menu[category.name].map((item) => {
                     const image = category.img;
-                    return (
-                      <Item
-                        key={item._id}
-                        item={item}
-                        img={image}
-                        handleAdd={handleAdd}
-                      />
-                    );
+                    return <Item key={item._id} item={item} img={image} />;
                   })}
                 </div>
               </div>

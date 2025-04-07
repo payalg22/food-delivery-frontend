@@ -1,43 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Cart.module.css";
 import icon from "../../assets/cart.png";
-import remove from "../../assets/remove.png";
 import share from "../../assets/share.png";
 import scooter from "../../assets/deliveryScooter.png";
 import store from "../../assets/newStore.png";
 import forward from "../../assets/forwardButton.png";
-import { useDispatch, useSelector } from "react-redux";
-import cartActions from "../../redux/cartSlice";
+import { useSelector } from "react-redux";
 import calculateTotal from "../../utils/calculateTotal";
+import CartItem from "./CartItem";
+import { useNavigate } from "react-router-dom";
 
-//TODO: CONNECT CART TO BACKEND: UPDATE
-function CartItem({ menuItem }) {
-  const dispatch = useDispatch();
-  const { quantity, price, name, _id } = menuItem;
-
-  return (
-    <div className={styles.itembox}>
-      <div className={styles.quantity}>{quantity}x</div>
-      <div className={styles.details}>
-        <div className={styles.price}>{"₹" + price}</div>
-        <div className={styles.item}>{name}</div>
-      </div>
-      <img
-        src={remove}
-        onClick={() => {
-          dispatch(cartActions.removeFromCart(_id));
-        }}
-      />
-    </div>
-  );
-}
 
 export default function Cart() {
-  const menuItems = useSelector((store) => store.cart);
-  const total = calculateTotal(menuItems);
+  const cartItems = useSelector((store) => store.cart);
+  const total = calculateTotal(cartItems);
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
-      {menuItems?.length === 0 ? (
+      {cartItems?.length === 0 ? (
         <p className={styles.empty}>Cart is empty</p>
       ) : (
         <>
@@ -51,7 +32,7 @@ export default function Cart() {
               <img src={icon} />
               <h1>My Basket</h1>
             </div>
-            {menuItems?.map((item) => {
+            {cartItems?.map((item) => {
               return <CartItem key={item._id} menuItem={item} />;
             })}
             <div className={styles.invoice}>
@@ -86,7 +67,7 @@ export default function Cart() {
                   <p>Starts at 16:50</p>
                 </div>
               </div>
-              <div className={styles.checkout}>
+              <div className={styles.checkout} onClick={() => navigate("/checkout")}>
                 <img src={forward} />
                 <h2>Checkout!</h2>
               </div>
