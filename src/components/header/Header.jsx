@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AppContext from "../../context/AppContext";
 import styles from "./Header.module.css";
 import cart from "../../assets/cart.png";
 import arrow from "../../assets/down.png";
@@ -9,18 +8,12 @@ import star from "../../assets/star.png";
 import { useSelector } from "react-redux";
 
 export default function Header({ handleCart }) {
-  const [defaultAddr, setDefaultAddr] = useState(null);
   const navigate = useNavigate();
-  const addressList = useSelector(store => store.address);
-
-  useEffect(() => {
-    if (addressList) {
-      const dAdd = addressList.find((addr) => addr.isDefault === true);
-      setDefaultAddr(dAdd);
-    }
-  }, []);
-
-  console.log(addressList);
+  const addressList = useSelector((store) => store.address);
+  const { address } = useSelector((store) => store.cart);
+  const deliverTo = address
+    ? addressList.find((addr) => addr._id === address)
+    : addressList.find((addr) => addr.isDefault === true);
 
   return (
     <div className={styles.container}>
@@ -31,9 +24,9 @@ export default function Header({ handleCart }) {
       </div>
       <div className={styles.middle}>
         <img src={location} />
-        <span>{defaultAddr?.address} &nbsp;</span>
+        <span>{deliverTo?.address} &nbsp;</span>
         <span className={styles.link} onClick={() => navigate("/address")}>
-          {defaultAddr ? "Change" : "Add"} Location{" "}
+          {deliverTo ? "Change" : "Add"} Location{" "}
         </span>
       </div>
       <div className={styles.right}>

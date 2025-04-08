@@ -17,7 +17,7 @@ export default function CartItem({ menuItem }) {
     <div className={styles.itembox}>
       <div className={styles.quantity}>{quantity}x</div>
       <div className={styles.details}>
-        <div className={styles.price}>{"₹" + price}</div>
+        <div className={styles.price}>{"₹" + price * quantity}</div>
         <div className={styles.item}>{name}</div>
       </div>
       <img src={remove} onClick={handleRemoveItem} />

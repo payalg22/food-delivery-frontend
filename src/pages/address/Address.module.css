@@ -54,6 +54,12 @@
 
 .details {
     font-size: 0.875em;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 1px 1px 10px 0px #FC8A06;
+    border: 1px solid #FC8A06;
 }
 
 .default, .others {

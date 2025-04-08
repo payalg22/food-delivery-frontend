@@ -2,28 +2,44 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: { items: [], address: "", payment: "", notes: "" },
   reducers: {
     itemsInCart: (state, action) => {
       return action.payload;
     },
     removeFromCart: (state, action) => {
-      const isItem = state.findIndex((item) => item._id === action.payload);
-      if (state[isItem].quantity === 1) {
-        return state.filter((item) => item._id !== action.payload);
+      const isItem = state.items.findIndex(
+        (item) => item._id === action.payload
+      );
+      if (state.items[isItem].quantity === 1) {
+        state.items = state.items.filter((item) => item._id !== action.payload);
       } else {
-        state[isItem].quantity--;
+        state.items[isItem].quantity--;
+      }
+      return state;
+    },
+    addToCart: (state, action) => {
+      const isItem = state.items.findIndex(
+        (item) => item._id === action.payload._id
+      );
+      if (isItem == -1) {
+        state.items.push({ ...action.payload, quantity: 1 });
+      } else {
+        state.items[isItem].quantity++;
         return state;
       }
     },
-    addToCart: (state, action) => {
-      const isItem = state.findIndex((item) => item._id === action.payload._id);
-      if (isItem == -1) {
-        state.push({ ...action.payload, quantity: 1 });
-      } else {
-        state[isItem].quantity++;
-        return state;
-      }
+    selectAddress: (state, action) => {
+      state.address = action.payload;
+      return state;
+    },
+    selectPayment: (state, action) => {
+      state.payment = action.payload;
+      return state;
+    },
+    addNotes: (state, action) => {
+      state.notes = action.payload;
+      return state;
     },
   },
 });

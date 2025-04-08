@@ -20,12 +20,13 @@ export default function Home() {
   const { isLoading, userInfo } = useContext(AppContext);
   const dispatch = useDispatch();
 
-  //Set user info
+  //Set cart, address and other info
   useEffect(() => {
     if (userInfo) {
       getCart().then((res) => {
         if (res?.status === 200) {
-          const cart = res.data.items.map((cartItem) => {
+            const cart = res.data;
+            cart.items = res.data.items.map((cartItem) => {
             return { ...cartItem.item, quantity: cartItem.quantity };
           });
           dispatch(cartActions.itemsInCart(cart));

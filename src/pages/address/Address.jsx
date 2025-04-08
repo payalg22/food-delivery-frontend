@@ -14,6 +14,9 @@ import AppContext from "../../context/AppContext";
 import PageLabel from "../../components/others/PageLabel";
 import { useDispatch, useSelector } from "react-redux";
 import addressActions from "../../redux/addressSlice";
+import Tooltip from "@mui/material/Tooltip";
+import cartActions from "../../redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Address() {
   const [stateList, setStateList] = useState([]);
@@ -22,6 +25,7 @@ export default function Address() {
   const [allAddresses, setAllAddresses] = useState();
   const allAddress = useSelector((store) => store.address);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getStateList().then((res) => {
@@ -35,6 +39,13 @@ export default function Address() {
       setAllAddresses(userInfo?.address);
     }
   }, [userInfo]);
+
+  const fetchUser = async () => {
+    const res = await getUser();
+    if (res.status === 200) {
+      setUserInfo(res.data);
+    }
+  };
 
   const handleSave = async (address) => {
     const res = await addAddress(address);
@@ -51,7 +62,6 @@ export default function Address() {
     const res = await modifyAddress(address);
     if (res.status === 201) {
       await fetchUser();
-      dispatch(addressActions.removeAddress(address._id));
       //toast saved succesfully
     } else {
       //toast unexpected error res.data.message
@@ -66,6 +76,7 @@ export default function Address() {
   const handleDelete = async (id) => {
     const res = await deleteAddress(id);
     if (res.status === 200) {
+      dispatch(addressActions.removeAddress(id));
       await fetchUser();
       //toast deleted succesfully
     } else {
@@ -73,12 +84,11 @@ export default function Address() {
     }
   };
 
-  const fetchUser = async () => {
-    const res = await getUser();
-    if (res.status === 200) {
-      setUserInfo(res.data);
-    }
-  };
+  const handleSelectAddr = (id) => {
+    //TODO: connect to address for cart api
+    dispatch(cartActions.selectAddress(id));
+    navigate(-1);
+  }
 
   return (
     <>
@@ -116,16 +126,18 @@ export default function Address() {
                       </span>
                     )}
                   </div>
-                  <p className={styles.details}>
-                    {addr.address +
-                      ", " +
-                      addr.city +
-                      ", " +
-                      addr.state +
-                      ", " +
-                      addr.pincode +
-                      ", India"}
-                  </p>
+                  <Tooltip title="Deliver here" placement="right">
+                    <p className={styles.details} onClick={() => handleSelectAddr(addr._id)}>
+                      {addr.address +
+                        ", " +
+                        addr.city +
+                        ", " +
+                        addr.state +
+                        ", " +
+                        addr.pincode +
+                        ", India"}
+                    </p>
+                  </Tooltip>
                   <p className={styles.details}>
                     {"Phone Number: " + addr.phonenumber}
                   </p>

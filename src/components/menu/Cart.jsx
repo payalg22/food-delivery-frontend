@@ -10,9 +10,9 @@ import calculateTotal from "../../utils/calculateTotal";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Cart() {
-  const cartItems = useSelector((store) => store.cart);
+  const cart = useSelector((store) => store.cart);
+  const cartItems = cart.items;
   const total = calculateTotal(cartItems);
   const navigate = useNavigate();
 
@@ -67,7 +67,10 @@ export default function Cart() {
                   <p>Starts at 16:50</p>
                 </div>
               </div>
-              <div className={styles.checkout} onClick={() => navigate("/checkout")}>
+              <div
+                className={styles.checkout}
+                onClick={() => navigate("/checkout")}
+              >
                 <img src={forward} />
                 <h2>Checkout!</h2>
               </div>

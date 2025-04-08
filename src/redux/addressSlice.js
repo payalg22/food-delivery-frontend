@@ -5,14 +5,14 @@ export const addressSlice = createSlice({
   initialState: [],
   reducers: {
     setAddresses: (state, action) => {
-        return action.payload;
+      return action.payload;
     },
     setDefaultAddress: (state, action) => {
       state.forEach((addr) => {
-        if(addr._id === action.payload) {
-            addr.isDefault = true;
+        if (addr._id === action.payload) {
+          addr.isDefault = true;
         } else {
-            addr.isDefault = false;
+          addr.isDefault = false;
         }
         return addr;
       });
