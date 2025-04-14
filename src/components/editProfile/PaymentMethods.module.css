@@ -1,0 +1,67 @@
+.addrBox,
+.card,
+.icon,
+.addNew,
+.container {
+  display: flex;
+  gap: 15px;
+}
+
+.container {
+  flex-direction: column;
+}
+
+.addrBox p {
+  margin: 0;
+  line-height: 125%;
+}
+
+.card,
+.addNew {
+  border-radius: 12px;
+  border: 0.5px solid rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  align-items: center;
+  text-align: left;
+}
+
+.addNew p {
+  margin: 0;
+  font-size: 20px;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.icon {
+  background-color: rgba(252, 138, 6, 0.1);
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: rgba(252, 138, 6, 1);
+  align-items: center;
+  justify-content: center;
+}
+
+.addNew .icon {
+  cursor: pointer;
+}
+
+.card > :last-child {
+  cursor: pointer;
+}
+
+.num {
+  font-size: 20px;
+}
+
+.name {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+}

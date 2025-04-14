@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { validateUpdate } from "../../utils/validate";
 import { updateUser } from "../../services/user";
 import PageLabel from "../../components/others/PageLabel";
+import PaymentMethods from "../../components/editProfile/PaymentMethods";
 
 const FormField = ({ details, isDisabled }) => {
   const { label, type, value, onAction, error } = details;
@@ -163,6 +164,8 @@ export default function EditProfile() {
               })}
             </div>
           </form>
+          <div className={styles.hr}></div>
+          <PaymentMethods />
         </div>
       )}
     </>

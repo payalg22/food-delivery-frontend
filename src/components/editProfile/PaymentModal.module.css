@@ -1,0 +1,82 @@
+.container {
+    background-color: #ffffff;
+    min-height: 50vh;
+    width: 50vw;
+    border-radius: 12px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container *, .container {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Poppins;
+}
+
+.controls, .inputBox, .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.title {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.container label {
+    font-size: 1.25em;
+}
+
+.container input {
+    padding: 10px 15px;
+    border: 2px solid rgba(175, 175, 175, 1);
+    width: 70%;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.controls {
+    flex: 1;
+    background-color: rgba(252, 138, 6, 1);
+    box-shadow: 4px 4px 40.8px 0px rgba(0, 0, 0, 0.25);
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+    margin-top: 20px;
+}
+
+.controls > * {
+    cursor: pointer;
+}
+
+.cancel {
+    margin-left: auto;
+    color: #ffffff;
+}
+
+.remove {
+    background-color: rgba(102, 55, 0, 1);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+input.submit {
+    background-color: rgba(255, 255, 255, 1);
+    width: fit-content;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.error {
+    color: red;
+    margin-left: 20px;
+}
