@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import styles from "./PaymentModal.module.css";
 import validateCard from "../../utils/validateCard";
+import { useDispatch } from "react-redux";
+import paymentActions from "../../redux/paymentSlice";
 
 export default function PaymentModal({ trigger, card }) {
   const [formData, setFormData] = useState({
-    cardNum: "",
-    cvc: "",
-    exp: "",
+    number: "",
+    cvv: "",
+    expiry: "",
     name: "",
     _id: Date.now,
   });
@@ -17,32 +19,35 @@ export default function PaymentModal({ trigger, card }) {
     exp: false,
     name: false,
   });
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (card) {
-      console.log(card);
-      setFormData({
-        cardNum: card.number,
-        name: card.name,
-        cvc: card.cvv,
-        exp: card.expiry,
-        _id: card._id,
-      });
+      setFormData(card);
     }
   }, []);
+
+  useEffect(() => {
+    setError({
+      num: false,
+      cvv: false,
+      exp: false,
+      name: false,
+    });
+  }, [formData]);
 
   const fields = [
     {
       label: "Card Number",
       placeholder: "xxxx xxxx xxxx xxxx",
       type: "text",
-      value: formData.cardNum,
+      value: formData.number,
       onChange: (e) => {
         let value = e.target.value.replace(/\D/g, "");
         const len = value.length;
         value = value.slice(0, 16);
         value = value.replace(/(.{4})/g, "$1 ").trim();
-        setFormData({ ...formData, cardNum: value });
+        setFormData({ ...formData, number: value });
       },
       id: "card-no",
       err: error.num,
@@ -51,13 +56,13 @@ export default function PaymentModal({ trigger, card }) {
       label: "Expiration",
       placeholder: "mm/yy",
       type: "text",
-      value: formData.exp,
+      value: formData.expiry,
       onChange: (e) => {
         let value = e.target.value.replace(/\D/g, "");
         if (value.length > 2) {
           value = value.slice(0, 2) + "/" + value.slice(2, 4);
         }
-        setFormData({ ...formData, exp: value });
+        setFormData({ ...formData, expiry: value });
       },
       id: "exp-date",
       err: error.exp,
@@ -66,9 +71,9 @@ export default function PaymentModal({ trigger, card }) {
       label: "CVC",
       placeholder: "xxx",
       type: "number",
-      value: formData.cvc,
+      value: formData.cvv,
       onChange: (e) => {
-        setFormData({ ...formData, cvc: e.target.value.slice(0, 3) });
+        setFormData({ ...formData, cvv: e.target.value.slice(0, 3) });
       },
       id: "card-cvc",
       err: error.cvv,
@@ -86,13 +91,22 @@ export default function PaymentModal({ trigger, card }) {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, close) => {
     e.preventDefault();
     const { isError, isValid } = validateCard(formData);
     if (isError) {
       setError(isValid);
+      return;
     }
+    //send to backend, with updated id, continue
+    dispatch(paymentActions.addCard(formData));
+    close();
   };
+
+  const handleRemove = (close) => {
+    dispatch(paymentActions.removeCard(formData._id));
+    close();
+  }
 
   return (
     <Popup
@@ -101,9 +115,14 @@ export default function PaymentModal({ trigger, card }) {
       overlayStyle={{ backgroundColor: "rgba(48, 61, 67, 0.55)" }}
     >
       {(close) => (
-        <form className={styles.container} onSubmit={handleSubmit}>
+        <form
+          className={styles.container}
+          onSubmit={(e) => {
+            handleSubmit(e, close);
+          }}
+        >
           <h1 className={styles.title}>Edit Payment Method</h1>
-          {fields.map((field, id) => {
+          {fields.map((field) => {
             return (
               <div key={field.id}>
                 <div className={styles.inputBox}>
@@ -114,6 +133,7 @@ export default function PaymentModal({ trigger, card }) {
                     placeholder={field.placeholder}
                     value={field.value}
                     onChange={field.onChange}
+                    className={field.err ? styles.err : styles.input}
                   />
                 </div>
                 {field.err && <p className={styles.error}>{field.err}</p>}
@@ -121,7 +141,7 @@ export default function PaymentModal({ trigger, card }) {
             );
           })}
           <div className={styles.controls}>
-            <div className={styles.remove}>Remove</div>
+            <div className={styles.remove} onClick={() => handleRemove(close)}>Remove</div>
             <div className={styles.cancel} onClick={close}>
               Cancel
             </div>

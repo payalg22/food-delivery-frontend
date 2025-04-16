@@ -15,6 +15,10 @@ export default function Header({ handleCart }) {
     ? addressList.find((addr) => addr._id === address)
     : addressList.find((addr) => addr.isDefault === true);
 
+  const handleCartOpen = () => {
+    navigate("/checkout");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -31,7 +35,7 @@ export default function Header({ handleCart }) {
       </div>
       <div className={styles.right}>
         <img src={cart} />
-        <span className={styles.cart} onClick={handleCart}>
+        <span className={styles.cart} onClick={handleCart || handleCartOpen}>
           My Cart
         </span>
         <span className={styles.blank}></span>

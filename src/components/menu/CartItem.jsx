@@ -12,7 +12,7 @@ export default function CartItem({ menuItem }) {
     dispatch(cartActions.removeFromCart(_id));
     await removeFromCart(_id);
   };
-  
+
   return (
     <div className={styles.itembox}>
       <div className={styles.quantity}>{quantity}x</div>

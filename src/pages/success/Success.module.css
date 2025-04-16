@@ -1,0 +1,94 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.container > * {
+  width: 80%;
+  margin: 0;
+}
+
+.success svg {
+  height: 100px;
+  width: 100px;
+  color: white;
+  border-radius: 50%;
+  background: rgba(50, 182, 56, 1);
+
+}
+
+.success > div > div {
+  padding: 20px;
+  border-radius: 50%;
+  animation: dimInner 2s ease-in-out infinite;
+  animation-delay: 0s;
+  background: rgba(50, 182, 56, 1);
+}
+
+.success > div {
+  padding: 20px;
+  border-radius: 50%;
+  animation: dimMiddle 2s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.success {
+  width: fit-content;
+  border-radius: 50%;
+  padding: 20px;
+  animation: dimOuter 2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.container > p {
+    max-width: 25%;
+    color: rgba(131, 133, 138, 1);
+}
+
+.order {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 25%;
+    border-radius: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.item {
+    margin: 5px;
+}
+
+.order button {
+    width: 75%;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: rgba(252, 138, 6, 1);
+    font-weight: 700;
+    font-size: 1em;
+    border-radius: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+@keyframes dimMiddle {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(50, 182, 56, 0.5);
+  }
+}
+
+@keyframes dimOuter {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(50, 182, 56, 0.12);
+    ;
+  }
+}

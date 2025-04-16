@@ -4,6 +4,8 @@ import { Login, Register, Home, Profile, Product, Address, NotFound } from "./pa
 import Footer from "./components/footer/Footer";
 import Scroll from "./pages/Scroll.jsx";
 import Checkout from "./pages/checkout/Checkout.jsx";
+import Payment from "./pages/payment/Payment.jsx";
+import Success from "./pages/success/Success.jsx";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/address" element={<Address />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/success" element={<Success />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

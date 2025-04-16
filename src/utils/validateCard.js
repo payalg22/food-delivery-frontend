@@ -51,11 +51,11 @@ const validateName = (name) => {
   return false;
 };
 
-export default function validateCard({ cardNum, cvc, exp, name }) {
+export default function validateCard({ number, cvv, expiry, name }) {
   const isValid = {
-    num: validateCardNum(cardNum),
-    cvv: validateCvv(cvc),
-    exp: validateExpiry(exp),
+    num: validateCardNum(number),
+    cvv: validateCvv(cvv),
+    exp: validateExpiry(expiry),
     name: validateName(name),
   };
   let isError = false;

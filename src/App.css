@@ -22,3 +22,13 @@
 .main {
     flex: 1;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(217, 217, 217, 1);
+    border-radius: 10px;
+}

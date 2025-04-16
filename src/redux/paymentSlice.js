@@ -15,6 +15,19 @@ export const paymentSlice = createSlice({
     setPayment: (state, action) => {
       return action.payload;
     },
+    addCard: (state, action) => {
+      //check if card exists
+      const isCard = state.findIndex((card) => card._id === action.payload._id);
+      if (isCard !== -1) {
+        state[isCard] = action.payload;
+      } else {
+        state.push(action.payload);
+      }
+      return state;
+    },
+    removeCard: (state, action) => {
+      return state.filter((card) => card._id !== action.payload);
+    },
   },
 });
 

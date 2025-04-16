@@ -15,7 +15,7 @@
     font-family: Poppins;
 }
 
-.controls, .inputBox, .title {
+.controls, .inputBox, .title, .error {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -76,7 +76,14 @@ input.submit {
     font-weight: 500;
 }
 
+input.err {
+    border-color: red;
+    outline-color: red;
+}
+
 .error {
     color: red;
-    margin-left: 20px;
+    width: 70%;
+    float: right;
+    font-size: 14px;
 }

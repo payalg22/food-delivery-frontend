@@ -18,11 +18,15 @@ export async function getCart() {
 
 export async function addToCart(id) {
   try {
-    const response = await axios.post(`${API_URL}/cart/add/${id}`, {}, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.post(
+      `${API_URL}/cart/add/${id}`,
+      {},
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     return error.response;

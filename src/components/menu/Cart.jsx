@@ -5,16 +5,22 @@ import share from "../../assets/share.png";
 import scooter from "../../assets/deliveryScooter.png";
 import store from "../../assets/newStore.png";
 import forward from "../../assets/forwardButton.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import calculateTotal from "../../utils/calculateTotal";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
+import cartActions from "../../redux/cartSlice";
 
 export default function Cart() {
   const cart = useSelector((store) => store.cart);
   const cartItems = cart.items;
-  const total = calculateTotal(cartItems);
+  const total = cart.cartTotal;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(cartActions.calculateCartTotal());
+  }, [cartItems]);
 
   return (
     <div className={styles.container}>
