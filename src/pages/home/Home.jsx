@@ -11,32 +11,9 @@ import Ad from "../../components/home/Ad";
 import PopularPlaces from "../../components/others/PopularPlaces";
 import Categories from "../../components/home/Categories";
 import AllRestaurants from "../../components/home/AllRestaurants";
-import { useDispatch } from "react-redux";
-import cartActions from "../../redux/cartSlice";
-import { getCart } from "../../services/cart";
-import addressActions from "../../redux/addressSlice";
 
 export default function Home() {
-  const { isLoading, userInfo } = useContext(AppContext);
-  const dispatch = useDispatch();
-
-  //Set cart, address and other info
-  useEffect(() => {
-    if (userInfo) {
-      getCart().then((res) => {
-        if (res?.status === 200) {
-            const cart = res.data;
-            cart.items = res.data.items.map((cartItem) => {
-            return { ...cartItem.item, quantity: cartItem.quantity };
-          });
-          dispatch(cartActions.itemsInCart(cart));
-        }
-      });
-      if (userInfo?.address) {
-        dispatch(addressActions.setAddresses(userInfo.address));
-      }
-    }
-  }, [userInfo]);
+  const { isLoading } = useContext(AppContext);
 
   return (
     <>

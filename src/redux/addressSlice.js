@@ -18,11 +18,11 @@ export const addressSlice = createSlice({
       });
       return state;
     },
-    removeAddress: (state, action) => {
+    addAddress: (state, action) => {
       state.push(action.payload);
       return state;
     },
-    addAddress: (state, action) => {
+    removeAddress: (state, action) => {
       return state.filter((item) => item._id !== action.payload);
     },
   },

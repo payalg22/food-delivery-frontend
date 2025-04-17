@@ -28,7 +28,7 @@ export default function Header({ handleCart }) {
       </div>
       <div className={styles.middle}>
         <img src={location} />
-        <span>{deliverTo?.address} &nbsp;</span>
+        <span>{deliverTo.city + ", " + deliverTo?.pincode} &nbsp;</span>
         <span className={styles.link} onClick={() => navigate("/address")}>
           {deliverTo ? "Change" : "Add"} Location{" "}
         </span>

@@ -1,18 +1,53 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Login, Register, Home, Profile, Product, Address, NotFound } from "./pages/index.js";
+import {
+  Login,
+  Register,
+  Home,
+  Profile,
+  Product,
+  Address,
+  NotFound,
+} from "./pages/index.js";
 import Footer from "./components/footer/Footer";
 import Scroll from "./pages/Scroll.jsx";
 import Checkout from "./pages/checkout/Checkout.jsx";
 import Payment from "./pages/payment/Payment.jsx";
 import Success from "./pages/success/Success.jsx";
+import { useDispatch } from "react-redux";
+import { useContext, useEffect } from "react";
+import AppContext from "./context/AppContext.jsx";
+import cartActions from "./redux/cartSlice.js";
+import addressActions from "./redux/addressSlice.js";
+import { getCart } from "./services/cart.js";
 
 function App() {
+  const { userInfo } = useContext(AppContext);
+  const dispatch = useDispatch();
+
+  //Set cart, address and other info
+  useEffect(() => {
+    if (userInfo) {
+      getCart().then((res) => {
+        if (res?.status === 200) {
+          const cart = res.data;
+          cart.items = res.data.items.map((cartItem) => {
+            return { ...cartItem.item, quantity: cartItem.quantity };
+          });
+          dispatch(cartActions.itemsInCart(cart));
+        }
+      });
+      if (userInfo?.address) {
+        dispatch(addressActions.setAddresses(userInfo.address));
+      }
+    }
+  }, [userInfo]);
+
   return (
     <div className="container">
       <div className="main">
         <BrowserRouter>
-        <Scroll />
+          <Scroll />
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />

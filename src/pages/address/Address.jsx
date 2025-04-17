@@ -9,6 +9,7 @@ import {
   deleteAddress,
   getUser,
   modifyAddress,
+  setDefaultAddress,
 } from "../../services/user";
 import AppContext from "../../context/AppContext";
 import PageLabel from "../../components/others/PageLabel";
@@ -51,7 +52,7 @@ export default function Address() {
     const res = await addAddress(address);
     if (res.status === 201) {
       await fetchUser();
-      dispatch(addressActions.addAddress(address));
+      dispatch(addressActions.addAddress(res.address));
       //toast saved succesfully
     } else {
       //toast unexpected error
@@ -68,9 +69,14 @@ export default function Address() {
     }
   };
 
-  const handleSetDefault = (id) => {
-    //handle setDefualt at backend
-    dispatch(addressActions.setDefaultAddress(id));
+  const handleSetDefault = async (id) => {
+    const res = await setDefaultAddress(id);
+    if(res.status === 200) {
+        dispatch(addressActions.setDefaultAddress(id));
+    } else {
+        //toast: something went wrong or msg
+    }
+    
   };
 
   const handleDelete = async (id) => {
